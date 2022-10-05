@@ -41,7 +41,7 @@ class ToDo {
       }
     });
   }
-  // method to 
+  // method to
 }
 const obj = new ToDo();
 obj.addToDo();
