@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack Boilerplate',
-      template: path.resolve(__dirname, './src/template.html'),
+      template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html', // output file
     }),
     // only update what changed on hot reload
