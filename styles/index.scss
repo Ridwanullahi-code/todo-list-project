@@ -77,6 +77,14 @@ body {
       outline: none;
     }
 
+    .dot {
+      cursor: move;
+    }
+
+    .fa-trash {
+      cursor: pointer;
+    }
+
     .fa {
       position: absolute;
       right: 3%;

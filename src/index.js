@@ -10,18 +10,22 @@ class ToDo {
     this.data = data;
     const parent = document.querySelector('.output');
     const ul = document.createElement('ul');
-    this.data.forEach((d) => {
-      ul.innerHTML = `
-        <li class="display-list">
-            <input type="checkbox" id= task${d.index} class="check"></input>
-             <input class="desc" value=${d.description}></input>
-            <i class="fa-solid  fa fa-ellipsis-vertical dot"></i>
-            <i id= ${d.index} class="fa-solid  fa fa-trash fa-hide"></i>
-        </li>
-        `;
-    });
+    ul.innerHTML = `
+      <li class="display-list">
+          <input type="checkbox" id= task${this.data.index} class="check"></input>
+            <input class="desc" value=${this.data.description}></input>
+          <i class="fa-solid  fa fa-ellipsis-vertical dot"></i>
+          <i id= ${this.data.index} class="fa-solid  fa fa-trash fa-hide"></i>
+      </li>
+      `;
     parent.append(ul);
   }
+
+  // get book from local storage
+  getStorage = () => {
+    const list = JSON.parse(localStorage.getItem('list'));
+    list.forEach((li) => this.displayToDo(li));
+  };
 
   check() {
     this.parent = document.querySelector('.output');
@@ -33,28 +37,15 @@ class ToDo {
     });
   }
 
-  createObj() {
-    const obj = {
-      description: this.list.value,
-      complete: false,
-      index: 0,
-    };
-    return obj;
-  }
-
-  addItem() {
-    const obj = this.createObj();
-    this.collection.push(obj);
-    obj.index += this.collection.length;
-    localStorage.setItem('list', JSON.stringify(this.collection));
-    return this.collection;
-  }
-
   addBtn() {
     this.list.addEventListener('keypress', (e) => {
       const en = document.querySelector('.add-list');
       if (e.key === 'Enter') {
-        this.displayToDo(this.addItem());
+        const obj = { description: this.list.value, complete: false, index: 0 };
+        this.collection.push(obj);
+        obj.index += this.collection.length;
+        this.displayToDo(obj);
+        localStorage.setItem('list', JSON.stringify(this.collection));
         en.value = '';
       }
     });
@@ -78,3 +69,5 @@ obj.addBtn();
 obj.check();
 obj.btn();
 del.trash(obj.collection);
+
+document.addEventListener('DOMContentLoaded', obj.getStorage());
