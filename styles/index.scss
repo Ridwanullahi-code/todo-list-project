@@ -75,5 +75,14 @@ body {
       right: 3%;
       color: grey;
     }
+    .fa-hide{
+      display: none;
+    }
+    .fa-show{
+      display:block;
+    }
+    .text{
+      text-decoration: line-through;
+    }
   }
 }

@@ -4,23 +4,24 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    bundle: path.resolve(__dirname, 'src/index.js'),
+    bundle: path.resolve(__dirname, "src/index.js"),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
     clean: true,
   },
+
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack Boilerplate',
-      template: path.resolve(__dirname, './src/template.html'),
-      filename: 'index.html', // output file
+      title:'To-do App',
+      template: path.resolve(__dirname, "./src/template.html"),
+      filename: "index.html"
     }),
-    // only update what changed on hot reload
+    //only update what changed on hot reload
     new webpack.HotModuleReplacementPlugin(),
   ],
-  mode: 'development',
+  mode: "development",
   devServer: {
     historyApiFallback: true,
     open: true,
@@ -35,7 +36,7 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

@@ -1,47 +1,78 @@
-import '../styles/index.scss';
+import "../styles/index.scss";
+import Delete from "./delete.js";
 
 class ToDo {
-  collection = [
-    {
-      description: 'Wash the dish',
-      complete: false,
-      index: 0,
-    },
-    {
-      description: 'Complete To Do list project',
-      complete: false,
-      index: 1,
-    },
-    {
-      description: 'Program Wesite',
-      complete: false,
-      index: 2,
-    },
-  ];
+  collection = [];
+  list = document.querySelector(".add-list");
 
   displayToDo(data) {
     this.data = data;
-    const parent = document.querySelector('.output');
-    const list = document.createElement('ul');
-    list.innerHTML = `
+    const parent = document.querySelector(".output");
+    const ul = document.createElement("ul");
+    this.data.forEach((d) => {
+      ul.innerHTML = `
         <li class="display-list">
-            <input type="checkbox" id= task${data.index}>
-            <label for=task${data.index}>${data.description}</label>
-            </input>
-            <i class="fa-solid fa-ellipsis-vertical fa"></i>
+            <input type="checkbox" id= task${d.index} class="check"></input>
+             <label contenteditable ="true" class="desc">${d.description}</label>
+            <i class="fa-solid  fa fa-ellipsis-vertical dot"></i>
+            <i class="fa-solid  fa fa-trash fa-hide"></i>
         </li>
         `;
-    parent.append(list);
+    })
+    parent.append(ul);   
   }
 
-  addToDo() {
-    this.collection.forEach((data, index) => {
-      if (data.index === index) {
-        this.displayToDo(data);
+  check() {
+    this.parent = document.querySelector(".output");
+    this.parent.addEventListener("click", (e) => {
+      if (e.target.className === "check") {
+        const la = e.target.parentElement.children[2];
+        la.classList.toggle("text");
       }
     });
   }
-  // method to
+  createObject() {
+    const obj = {
+      description: this.list.value,
+      complete: false, index: 0
+    };
+    return obj
+  }
+
+  addItem() {
+    this.collection.push(this.createObject());
+    obj.index += this.collection.indexOf(obj);
+    localStorage.setItem("list", JSON.stringify(this.collection));
+    return this.collection;
+  }
+
+  addBtn() {
+    this.list.addEventListener("keypress", (e) => {
+      const en = document.querySelector(".add-list");
+      if (e.key === "Enter") {
+        this.displayToDo(this.addItem());
+        en.value = "";
+      }
+    });
+  }
+
+  btn() {
+    const parent = document.querySelector(".output");
+      parent.addEventListener("click", (e) => {
+          if (e.target.classList.contains("dot")) {
+        e.target.classList.toggle("fa-hide");
+        e.target.nextElementSibling.classList.toggle("fa-show");
+        e.target.parentElement.style.backgroundColor = "orange";
+      }
+    });
+  }
+
 }
 const obj = new ToDo();
-obj.addToDo();
+const del = new Delete();
+obj.addBtn();
+obj.check();
+obj.btn();
+del.trash(obj.collection, obj.createObject());
+
+
