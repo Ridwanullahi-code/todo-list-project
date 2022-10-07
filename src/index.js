@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import Delete from './delete.js';
+import Action from './action.js';
 
 class ToDo {
   collection = [];
@@ -65,10 +66,12 @@ class ToDo {
 }
 const obj = new ToDo();
 const del = new Delete();
+const act = new Action();
 obj.addBtn();
 obj.check();
 obj.btn();
 del.trash(obj.collection);
 del.delete(obj.collection);
+act.complete(obj.collection);
 
 document.addEventListener('DOMContentLoaded', obj.getStorage());
