@@ -1,26 +1,22 @@
-import { values } from "lodash";
-
 export default class Delete {
   // delete list
-  trash(col, item) {
-    const parent = document.querySelector(".output");
-    parent.addEventListener("click", (e) => {
-      const check = e.target.parentElement.children[0].checked;
-      if (e.target.classList.contains("fa-trash") && check) {
-        this.clearStorage(col, item);
+  trash(col) {
+    const parent = document.querySelector('.output');
+    parent.addEventListener('click', (e) => {
+      if (e.target.classList.contains('fa-trash')) {
+        this.clearStorage(col, e.target.id);
         e.target.parentElement.remove();
       }
     });
   }
 
-  clearStorage(col, item) {
-    const val = Object.values(col);
-    val.forEach((el) => {
-      if (val.indexOf(el) === item.index) {
-        col.splice(val.indexOf(el), 1)
-        val.index = col.indexOf(el);
+  clearStorage(col, id) {
+    this.col = col;
+    col.forEach((el, index) => {
+      if (el.index === Number(id)) {
+        col.splice(index, 1);
       }
-    })
-    localStorage.setItem('list', JSON.stringify(col))
+    });
+    localStorage.setItem('list', JSON.stringify(this.col));
   }
 }

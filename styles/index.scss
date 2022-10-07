@@ -54,7 +54,11 @@ body {
       text-align: center;
       cursor: pointer;
       font-size: 20px;
-      color: grey;
+      color: black;
+    }
+
+    .clear-btn:hover {
+      text-decoration: underline;
     }
   }
 
@@ -66,8 +70,11 @@ body {
     padding: 20px;
     border-bottom: 1px solid grey;
 
-    label {
+    .desc {
+      width: 80%;
       margin-left: 20px;
+      border: none;
+      outline: none;
     }
 
     .fa {
@@ -75,13 +82,16 @@ body {
       right: 3%;
       color: grey;
     }
-    .fa-hide{
+
+    .fa-hide {
       display: none;
     }
-    .fa-show{
-      display:block;
+
+    .fa-show {
+      display: block;
     }
-    .text{
+
+    .text {
       text-decoration: line-through;
     }
   }
