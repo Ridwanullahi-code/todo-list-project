@@ -12,8 +12,8 @@ class ToDo {
     const ul = document.createElement('ul');
     ul.innerHTML = `
       <li class="display-list">
-          <input type="checkbox" id= task${this.data.index} class="check"></input>
-            <input class="desc" value=${this.data.description}></input>
+          <input type="checkbox" id= ${this.data.index} class="check"></input>
+          <input class="desc" value=${this.data.description}></input>
           <i class="fa-solid  fa fa-ellipsis-vertical dot"></i>
           <i id= ${this.data.index} class="fa-solid  fa fa-trash fa-hide"></i>
       </li>
@@ -69,5 +69,6 @@ obj.addBtn();
 obj.check();
 obj.btn();
 del.trash(obj.collection);
+del.delete(obj.collection);
 
 document.addEventListener('DOMContentLoaded', obj.getStorage());

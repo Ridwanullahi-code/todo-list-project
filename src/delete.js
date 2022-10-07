@@ -11,11 +11,26 @@ export default class Delete {
   }
 
   clearStorage(col, id) {
-    col.forEach((el, index) => {
+    this.col = col;
+    this.col.forEach((el, index) => {
       if (el.index === Number(id)) {
-        col.splice(index, 1);
+        this.col.splice(index, 1);
       }
     });
-    localStorage.setItem('list', JSON.stringify(col));
+    localStorage.setItem('list', JSON.stringify(this.col));
+  }
+
+  // delete list
+  delete(col) {
+    this.clear = document.querySelector('.clear-btn');
+    this.clear.addEventListener('click', () => {
+      this.checks = document.querySelectorAll('.check');
+      this.checks.forEach((check) => {
+        if (check.checked === true) {
+          check.parentElement.remove();
+          this.clearStorage(col, check.id);
+        }
+      });
+    });
   }
 }
