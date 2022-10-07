@@ -11,12 +11,11 @@ export default class Delete {
   }
 
   clearStorage(col, id) {
-    this.col = col;
     col.forEach((el, index) => {
       if (el.index === Number(id)) {
         col.splice(index, 1);
       }
     });
-    localStorage.setItem('list', JSON.stringify(this.col));
+    localStorage.setItem('list', JSON.stringify(col));
   }
 }
