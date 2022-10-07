@@ -9,7 +9,7 @@ export default class Delete {
       }
     });
   }
-
+// Add method to reset index
   clearStorage(col, id) {
     this.col = col;
     this.col.forEach((el, index) => {
