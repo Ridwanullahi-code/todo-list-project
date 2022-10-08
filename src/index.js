@@ -67,6 +67,7 @@ class ToDo {
 const obj = new ToDo();
 const del = new Delete();
 const act = new Action();
+
 obj.addBtn();
 obj.check();
 obj.btn();
@@ -74,4 +75,5 @@ del.trash(obj.collection);
 del.delete(obj.collection);
 act.complete(obj.collection);
 
+// Display all todo list when page loaded
 document.addEventListener('DOMContentLoaded', obj.getStorage());

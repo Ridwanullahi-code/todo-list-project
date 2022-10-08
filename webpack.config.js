@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'To-do App',
-      template: path.resolve(__dirname, './src/template.html'),
+      template: './src/template.html',
       filename: 'index.html',
     }),
     // only update what changed on hot reload
@@ -23,6 +23,7 @@ module.exports = {
   ],
   mode: 'development',
   devServer: {
+    static: './dist',
     historyApiFallback: true,
     open: true,
     liveReload: true,
