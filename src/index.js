@@ -51,7 +51,7 @@ class ToDo {
       }
     });
   }
-
+// Method to handle button clicked
   btn() {
     this.parent = document.querySelector('.output');
     this.parent.addEventListener('click', (e) => {
@@ -67,7 +67,7 @@ class ToDo {
 const obj = new ToDo();
 const del = new Delete();
 const act = new Action();
-
+// Calling all methods
 obj.addBtn();
 obj.check();
 obj.btn();
