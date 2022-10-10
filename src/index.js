@@ -51,7 +51,8 @@ class ToDo {
       }
     });
   }
-// Method to handle button clicked
+
+  // Method to handle button clicked
   btn() {
     this.parent = document.querySelector('.output');
     this.parent.addEventListener('click', (e) => {
