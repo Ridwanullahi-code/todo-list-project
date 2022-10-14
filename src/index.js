@@ -39,6 +39,7 @@ class ToDo {
   }
 
   addBtn() {
+    console.log("Hello world")
     this.list.addEventListener('keypress', (e) => {
       const en = document.querySelector('.add-list');
       if (e.key === 'Enter') {
